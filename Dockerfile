@@ -22,4 +22,7 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 # Run the GenAI analyzer
-CMD ["python", "main.py"]
+ENTRYPOINT ["python", "main.py"]
+
+# Provide default arguments just in case none are passed
+CMD ["-f", "server_logs.txt"]

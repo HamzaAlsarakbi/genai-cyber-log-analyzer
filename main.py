@@ -4,7 +4,7 @@ import time
 import argparse
 import logging
 from dotenv import load_dotenv
-from langchain_openai import ChatGroq
+from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from openai import RateLimitError
 
@@ -62,7 +62,7 @@ def analyze_logs(log_file_path, output_file_path=None, max_retries=3):
         logger.error(f"Could not find {log_file_path}")
         return
 
-    logger.info("Analyzing logs via OpenRouter (Gemma 3 27B)...")
+    logger.info("Analyzing logs via Groq (Llama 3.3 70B)...")
     
     # Create the execution chain
     chain = prompt | llm 
