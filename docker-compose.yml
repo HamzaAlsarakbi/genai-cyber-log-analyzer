@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  genai-analyzer:
+    build: .
+    container_name: cyber_log_analyzer
+    env_file:
+      - .env
+    # This keeps the container from immediately exiting if it finishes, 
+    # though for a one-off script, just letting it run and exit is fine too.

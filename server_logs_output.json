@@ -1,0 +1,18 @@
+{
+    "threats_detected": [
+        {
+            "ip_address": "10.0.0.52",
+            "vulnerability_type": "Brute-Force/Credential Stuffing",
+            "risk_level": "Medium",
+            "evidence": "10.0.0.52 - - [10/Oct/2026:13:56:01 -0700] \"POST /login HTTP/1.1\" 401 512\n10.0.0.52 - - [10/Oct/2026:13:56:02 -0700] \"POST /login HTTP/1.1\" 401 512\n10.0.0.52 - - [10/Oct/2026:13:56:03 -0700] \"POST /login HTTP/1.1\" 401 512\n10.0.0.52 - - [10/Oct/2026:13:56:04 -0700] \"POST /login HTTP/1.1\" 401 512",
+            "mitigation_strategy": "Implement account lockout policies after multiple failed login attempts. Consider multi-factor authentication. Monitor for similar patterns from other IPs. Rate limiting on login attempts."
+        },
+        {
+            "ip_address": "172.16.0.8",
+            "vulnerability_type": "SQL Injection",
+            "risk_level": "High",
+            "evidence": "172.16.0.8 - - [10/Oct/2026:14:02:11 -0700] \"GET /products.php?id=1' OR '1'='1 HTTP/1.1\" 200 8943",
+            "mitigation_strategy": "Implement parameterized queries or prepared statements. Input validation and sanitization. Web Application Firewall (WAF) deployment. Regularly scan for vulnerabilities."
+        }
+    ]
+}
