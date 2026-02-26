@@ -29,15 +29,42 @@ GROQ_API_KEY=your_actual_api_key_here
 
 ## 🐳 Execution: Docker (Recommended)
 
-This is the preferred method as it runs the analyzer in an isolated, non-root environment.
+This is the preferred method as it runs the analyzer in an isolated, non-root environment. You can either pull the pre-built image from the GitHub Container Registry (GHCR) or build it locally.
 
-1. Build the Image
+### Option A: Pull from GHCR (Fastest)
+
+1. Pull the pre-built image:
+
+```bash
+docker pull ghcr.io/hamzaalsarakbi/cyber_log_analyzer:latest
+```
+
+2. Run the Analyzer:
+
+```bash
+docker run --rm --env-file .env \
+-v $(pwd):/app/ ghcr.io/hamzaalsarakbi/cyber_log_analyzer:latest \
+-f server_logs.txt \
+-o output.json
+```
+
+### Option B: Build Locally
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/HamzaAlsarakbi/genai-cyber-log-analyzer
+cd genai-cyber-log-analyzer
+```
+
+2. Build the Image:
 
 ```bash
 docker build -t cyber_log_analyzer .
 ```
 
-2. Run the Analyzer
+3. Run the Analyzer
+
 This command mounts your current directory, feeds the target log file to the container, saves the output locally, and then instantly destroys the container.
 
 ```bash
@@ -49,7 +76,14 @@ docker run --rm --env-file .env \
 
 ## 🐍 Execution: Bare Metal (Python)
 
-1. Setup the Virtual Environment
+1. Clone the repository
+
+```bash
+git clone https://github.com/HamzaAlsarakbi/genai-cyber-log-analyzer
+cd genai-cyber-log-analyzer
+```
+
+2. Setup the Virtual Environment
 
 ```bash
 python -m venv venv
@@ -57,7 +91,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. Run the Script
+3. Run the Script
 
 ```bash
 python main.py -f server_logs.txt -o output.json
